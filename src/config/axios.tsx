@@ -1,4 +1,5 @@
 import axios from 'axios'
+import history from './history'
 
 const appId = 'nnisJpYRKhMVWLpTdNxf8UnN'
 const appSecret = '89VekUFZPK2CWpHRGpCHGgvb'
@@ -28,7 +29,9 @@ instance.interceptors.response.use((response) => {
     }
     return response
 }, (error) => {
-    console.error(error)
+    if (error.response.status === 401) {
+        history.push('login')
+    }
     return Promise.reject(error)
 })
 

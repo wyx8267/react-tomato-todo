@@ -18,7 +18,7 @@ export default class Login extends React.Component<any, ILoginState> {
             password: ''
         }
     }
-    onChange=(key:keyof ILoginState,value:string)=>{
+    onChange = (key: keyof ILoginState, value: string) => {
         const newState = {}
         newState[key] = value
         this.setState(newState)
@@ -44,7 +44,7 @@ export default class Login extends React.Component<any, ILoginState> {
                     placeholder="请输入用户名"
                     prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                     value={account}
-                    onChange={(e)=>this.onChange('account',e.target.value)}
+                    onChange={(e) => this.onChange('account', e.target.value)}
                 />
                 <Input.Password
                     placeholder="请输入密码"

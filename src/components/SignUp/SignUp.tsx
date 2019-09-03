@@ -20,14 +20,10 @@ export default class SignUp extends React.Component<any, ISignUpState> {
             passwordConfirmation: ''
         }
     }
-    onChangeAccount = (e) => {
-        this.setState({ account: e.target.value })
-    }
-    onChangePassword = (e) => {
-        this.setState({ password: e.target.value })
-    }
-    onChangePasswordConfirmation = (e) => {
-        this.setState({ passwordConfirmation: e.target.value })
+    onChange = (key: keyof ISignUpState, value: string) => {
+        const newState = {}
+        newState[key] = value
+        this.setState(newState)
     }
     submit = async () => {
         const { account, password, passwordConfirmation } = this.state
@@ -37,7 +33,7 @@ export default class SignUp extends React.Component<any, ISignUpState> {
                 password,
                 password_confirmation: passwordConfirmation
             })
-            console.log('success')
+            this.props.history.push('/')
         } catch (e) {
             throw new Error(e)
         }
@@ -51,19 +47,19 @@ export default class SignUp extends React.Component<any, ISignUpState> {
                     placeholder="请输入用户名"
                     prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                     value={account}
-                    onChange={this.onChangeAccount}
+                    onChange={(e) => this.onChange('account', e.target.value)}
                 />
                 <Input.Password
                     placeholder="请输入密码"
                     value={password}
-                    onChange={this.onChangePassword}
+                    onChange={(e) => this.onChange('password', e.target.value)}
                 />
                 <Input.Password
                     placeholder="请确认密码"
                     value={passwordConfirmation}
-                    onChange={this.onChangePasswordConfirmation}
+                    onChange={(e) => this.onChange('passwordConfirmation', e.target.value)}
                 />
-                <Button className="loginButton" type="primary" onClick={this.submit}>注册</Button>
+                <Button className="signUpButton" type="primary" onClick={this.submit}>注册</Button>
                 <p>Or <Link to="/login">点此登录</Link></p>
             </div>
         )

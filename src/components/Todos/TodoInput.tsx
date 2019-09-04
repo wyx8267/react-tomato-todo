@@ -18,11 +18,11 @@ export default class TodoInput extends React.Component<any, ITodoInputState> {
     onKeyUp = (e) => {
         if (e.keyCode === 13 && this.state.description !== '') {
             this.addTodo()
-            this.setState({ description: '' })
         }
     }
     addTodo = () => {
         this.props.addTodo({ description: this.state.description })
+        this.setState({ description: '' })
     }
     render() {
         const { description } = this.state

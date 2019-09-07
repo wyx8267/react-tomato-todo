@@ -6,7 +6,7 @@ export const addTodo = (payload: any) => {
         payload
     }
 }
-export const initTodos = (payload: any) => {
+export const initTodos = (payload: any[]) => {
     return {
         type: INIT_TODOS,
         payload

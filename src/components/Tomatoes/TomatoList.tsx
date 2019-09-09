@@ -38,8 +38,6 @@ class TomatoList extends React.Component<ITomatoListProps>{
                 </div>
             )
         })
-        console.log('list')
-        console.log(list)
         return (
             <div className="TomatoList" id="TomatoList">
                 {list}

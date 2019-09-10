@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { format } from 'date-fns'
+import { format, getDay } from 'date-fns'
 import { Tabs } from 'antd'
 import TodoHistoryTodoItem from './TodoHistoryTodoItem'
 import _ from 'lodash'
@@ -33,12 +33,23 @@ class TodoHistory extends React.Component<ITodoHistoryProps> {
     }
     render() {
         const finishedTodoList = this.finishedDates.map(date => {
+            const weekday = (date)=>{
+                switch(getDay(new Date(date))){
+                    case 1: return '周一'
+                    case 2: return '周二'
+                    case 3: return '周三'
+                    case 4: return '周四'
+                    case 5: return '周五'
+                    case 6: return '周六'
+                    case 0: return '周日'
+                }
+            }
             return (
                 <div key={date} className="dailyTodos">
                     <div className="summary">
                         <p className="date">
                             <span>{date}</span>
-                            <span>周五</span>
+                            <span>{weekday(date)}</span>
                         </p>
                         <p className="finishedCount">
                             完成了{this.dailyFinishedTodos[date].length}个任务
@@ -46,7 +57,7 @@ class TodoHistory extends React.Component<ITodoHistoryProps> {
                     </div>
                     <div className="todoList">
                         {
-                            this.dailyFinishedTodos[date].map(todo => <TodoHistoryTodoItem key={todo.id} todo={todo} itemType="finished" />)
+                            this.dailyFinishedTodos[date].map(todo => <TodoHistoryTodoItem key={todo.id} todo={todo} itemType="completed" />)
                         }
                     </div>
                 </div>

@@ -25,12 +25,12 @@ class TodoHistoryTodoItem extends React.Component<ITodoHistoryTodoItemProps> {
     }
     render() {
         let action, formatText, time
-        if (this.props.itemType === 'finished') {
+        if (this.props.itemType === 'completed') {
             formatText = 'HH:mm'
             time = this.props.todo.updated_at
             action = (
                 <div className="action">
-                    <span onClick={() => this.updateTodo({ finished: false })}>恢复</span>
+                    <span onClick={() => this.updateTodo({ completed: false })}>恢复</span>
                     <span onClick={() => this.updateTodo({ deleted: true })}>删除</span>
                 </div>
             )
@@ -55,7 +55,7 @@ class TodoHistoryTodoItem extends React.Component<ITodoHistoryTodoItemProps> {
     }
 }
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (ownProps) => ({
     ...ownProps
 })
 const mapDispatchToProps = {

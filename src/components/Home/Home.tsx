@@ -63,9 +63,9 @@ class Home extends React.Component<any, IHomeState> {
         return (
             <div className="Home" id="Home">
                 <header>
-                    <span className="logo">LOGO</span>
+                    <span className="logo">TOMATO-TODO</span>
                     <Dropdown overlay={menu}>
-                        <span>
+                        <span className="userName">
                             {this.state.user && this.state.user.account}
                             <Icon type="down" style={{ marginLeft: 8 }} />
                         </span>

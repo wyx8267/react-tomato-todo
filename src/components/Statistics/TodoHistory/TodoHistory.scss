@@ -1,4 +1,5 @@
 #TodoHistory {
+    background-color: #fff;
     .dailyTodos {
         padding: 16px;
         border: 1px solid #ddd;
@@ -7,7 +8,7 @@
         display: flex;
 
         .summary {
-            width: 100px;
+            width: 120px;
             margin-right: 8px;
 
             .date {

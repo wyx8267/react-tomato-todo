@@ -7,8 +7,19 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid #badfdb;
         padding: 16px 0;
+
+        .logo {
+            color: #ef4b4b;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .userName {
+            font-weight: 700;
+            font-size: 18px;
+        }
     }
 
     >main {
